@@ -1,0 +1,21 @@
+int findDuplicate(vector<int>& nums) {
+        
+        int n= nums.size();
+        vector<int> HashT(n,0);
+        
+        for(int i=0;i<n;i++)
+        {
+            HashT[nums[i]]++;
+        }
+        
+        for(int i=0;i<n;i++)
+        {
+            if(HashT[i]>1)
+            {
+                return i;
+            }
+        }
+        
+        return 0;
+    }
+};
