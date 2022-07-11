@@ -1,0 +1,44 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        
+     //Three variables to count no. of 0s 1s and 2s
+        int x=0,y=0,z=0;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]==0)
+                x++;
+            else if(nums[i]==1)
+                y++;
+            else
+                z++;
+        }
+        
+        //Now initialize the no. of 0s 1s and 2s in the array in order
+        
+        int j=0;
+        while(j<nums.size())
+        {
+            if(x>0)
+            {
+                nums[j] = 0;
+                x--;
+                j++;
+            }
+            else if(y>0)
+            {
+                nums[j] = 1;
+                y--;
+                j++;
+            }
+            else if(z>0)
+            {
+                nums[j] = 2;
+                z--;
+                j++;
+            }
+        }
+        
+    }
+};
