@@ -1,0 +1,70 @@
+// 1st solution
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        if(m==0)
+        {
+            for(int i=0;i<n;i++)
+            {
+                nums1[i]=nums2[i];
+            }
+        }
+        
+        vector<int> store(m+n);
+        
+        int i=0,j=0,k=0;
+        while(i<m && j<n)
+        {
+            if(nums1[i]<=nums2[j])
+            {
+                store[k++]= nums1[i++];
+            }
+            else if(nums1[i]>nums2[j])
+            {
+                store[k++]=nums2[j++];
+            }
+        }
+        for(;i<m;i++)
+        {
+            store[k++]=nums1[i];
+        }
+        for(;j<n;j++)
+        {
+            store[k++] = nums2[j];
+        }
+        
+        for(int s=0; s<m+n; s++)
+        {
+            nums1[s] = store[s];
+        }
+        
+    }
+};
+
+
+//2nd solution
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        
+        int i=m-1;
+        int j=n-1;
+        int point = m+n-1;
+        
+        while(j>=0)
+        {
+            if(i>=0 && nums1[i]>nums2[j])
+            {
+                nums1[point--] = nums1[i--];
+            }
+            
+            else
+            {
+                nums1[point--] = nums2[j--];
+            }
+        }
+        
+    }
+};
